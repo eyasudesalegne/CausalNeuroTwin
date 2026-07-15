@@ -31,10 +31,10 @@ jobs:
           tar -xJf /tmp/phase03-diff.tar.xz -C .
           test -f PHASE_03_REPORT.md
           test -f src/causalneurotwin/datasets.py
+          git checkout HEAD -- .github/workflows/ci.yml .github/workflows/apply-phase03-payload.yml
           rm -f .phase03_diff.part* .phase03_diff.ready
           rm -f .phase03_fixed.part* .phase03_fixed.ready
           rm -f .phase03_payload.part* .phase03_payload.ready
-          rm -f .github/workflows/apply-phase03-payload.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
