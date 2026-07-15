@@ -1,11 +1,7 @@
-# Configuration directory
+# Configuration
 
-Phase 01 contains only a non-sensitive project example. Typed scientific configuration and immutable run contracts will be introduced in Phase 02.
+Committed configurations must be non-sensitive, versioned, and validated.
 
-Rules:
+Phase 02 uses `run_contract.example.yaml` to exercise the complete configuration and run lifecycle without participant data or scientific computation. Absolute private paths, credentials, and participant identifiers are prohibited. Future dataset locations must be supplied through environment variables or local untracked files.
 
-- never commit credentials or private absolute paths;
-- use environment variables for local storage roots;
-- record units explicitly when scientific parameters are introduced;
-- save fully resolved configurations with every future run;
-- do not silently change defaults after a tagged scientific release.
+`project.example.toml` is retained as the Phase 01 diagnostic example; it is not the Phase 02 run schema.

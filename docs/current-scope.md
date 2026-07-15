@@ -1,20 +1,19 @@
 # Current scope
 
-## Implemented
+## Implemented through Phase 02
 
-- Python package and command-line entry point;
+- installable Python package and CLI;
 - environment diagnostic;
-- optional dependency and CUDA availability inspection;
-- output writability check;
-- private-path-safe data-root status;
-- repository scanner for prohibited artefacts;
-- automated tests and package build;
-- governance and development policies.
+- strict typed YAML configuration;
+- immutable run IDs and run directories;
+- atomic serialisation;
+- structured logs and lifecycle markers;
+- privacy-aware provenance;
+- input and output SHA-256 checksums;
+- safe resume for matching incomplete runs;
+- repository data/secret scanner;
+- automated quality and build checks.
 
 ## Not implemented
 
-No scientific dataset, connectome, stimulation field, brain model, training model, evaluation result, or HPC benchmark is included in Phase 01.
-
-## Readiness classification
-
-The repository is a **tested software foundation**, not yet a functional computational-neuroscience prototype. The next phases must add a run contract and then one real-data vertical slice before the project can be described as an HPC development candidate.
+No participant dataset, BIDS pipeline, connectome, electric-field simulation, whole-brain model, NeuroAI model, clinical validation, or measured HPC scaling is present.

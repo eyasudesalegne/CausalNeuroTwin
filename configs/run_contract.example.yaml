@@ -1,0 +1,58 @@
+schema_version: "1.0"
+
+project:
+  name: CausalNeuroTwin
+  phase: phase-02-run-contract
+  description: Non-scientific validation of configuration, provenance, and run lifecycle.
+  tags:
+    - research-software
+    - reproducibility
+    - run-contract
+
+reproducibility:
+  master_seed: 20260715
+  dataset_split_seed: 1001
+  simulation_seed: 1002
+  model_seed: 1003
+  dataloader_seed: 1004
+  deterministic: true
+
+data:
+  dataset_id: phase-02-no-participant-data
+  dataset_version: "1"
+  manifest_path: null
+  required: false
+
+simulation:
+  enabled: false
+  engine: not-implemented
+  duration_seconds: null
+  time_step_seconds: null
+
+model:
+  enabled: false
+  name: not-implemented
+  precision: float32
+
+training:
+  enabled: false
+  epochs: 0
+  batch_size: 0
+  learning_rate: null
+
+evaluation:
+  enabled: false
+  metrics: []
+
+hpc:
+  scheduler: local
+  nodes: 1
+  tasks_per_node: 1
+  cpus_per_task: 1
+  gpus_per_node: 0
+
+output:
+  run_prefix: cnt-phase02
+  retain_intermediate: false
+  checksum_algorithm: sha256
+  overwrite: false

@@ -5,7 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from causalneurotwin import cli
+from causalneurotwin import __version__, cli
 
 
 def test_doctor_human_output(tmp_path: Path) -> None:
@@ -23,7 +23,7 @@ def test_doctor_human_output(tmp_path: Path) -> None:
         text=True,
     )
     assert result.returncode == 0
-    assert "CausalNeuroTwin 0.1.0a1" in result.stdout
+    assert f"CausalNeuroTwin {__version__}" in result.stdout
     assert "Overall: ready" in result.stdout
 
 
