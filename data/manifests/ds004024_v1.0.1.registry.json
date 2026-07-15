@@ -1,0 +1,15 @@
+{
+  "dataset_id": "ds004024",
+  "dataset_version": "1.0.1",
+  "dataset_doi": "10.18112/openneuro.ds004024.v1.0.1",
+  "registry_config": "configs/data/openneuro_ds004024.yaml",
+  "raw_data_committed": false,
+  "participant_attributes_committed": false,
+  "participant_count_expected": 13,
+  "local_root_environment_variable": "CAUSALNEUROTWIN_DATA_ROOT",
+  "local_relative_path": "openneuro/ds004024-v1.0.1",
+  "validation_scope": "dataset identity, metadata, subject directory alignment, and modality layout only",
+  "full_bids_validation_completed": false,
+  "payload_integrity_validation_completed": false,
+  "scientific_readiness": false
+}

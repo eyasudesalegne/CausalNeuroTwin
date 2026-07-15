@@ -1,4 +1,4 @@
-.PHONY: install lint format-check type test build doctor run-contract verify clean
+.PHONY: install lint format-check type test build doctor run-contract dataset-fixture dataset-validate verify clean
 
 install:
 	python -m pip install -e ".[dev]"
@@ -25,8 +25,16 @@ run-contract:
 	rm -rf .phase02-validation
 	causalneurotwin run-contract --config configs/run_contract.example.yaml --output-root .phase02-validation --run-id phase02-make-validation
 
+dataset-fixture:
+	rm -rf .ci-dataset-root
+	python scripts/create_phase03_fixture.py --output .ci-dataset-root/openneuro/ds004024-v1.0.1
+
+dataset-validate: dataset-fixture
+	rm -rf .phase03-validation
+	causalneurotwin dataset validate --registry configs/data/openneuro_ds004024.yaml --dataset-root .ci-dataset-root/openneuro/ds004024-v1.0.1 --output-dir .phase03-validation
+
 verify:
-	rm -rf .phase02-validation
+	rm -rf .phase02-validation .phase03-validation .ci-dataset-root
 	python scripts/verify_repository.py
 	ruff check .
 	ruff format --check .
@@ -35,7 +43,9 @@ verify:
 	python -m build
 	causalneurotwin doctor
 	causalneurotwin run-contract --config configs/run_contract.example.yaml --output-root .phase02-validation --run-id verify
-	rm -rf .phase02-validation
+	python scripts/create_phase03_fixture.py --output .ci-dataset-root/openneuro/ds004024-v1.0.1
+	causalneurotwin dataset validate --registry configs/data/openneuro_ds004024.yaml --dataset-root .ci-dataset-root/openneuro/ds004024-v1.0.1 --output-dir .phase03-validation
+	rm -rf .phase02-validation .phase03-validation .ci-dataset-root
 
 clean:
-	rm -rf build dist .pytest_cache .mypy_cache .ruff_cache htmlcov coverage.xml .coverage runs .phase02-validation
+	rm -rf build dist .pytest_cache .mypy_cache .ruff_cache htmlcov coverage.xml .coverage runs .phase02-validation .phase03-validation .ci-dataset-root .ci-dataset-report

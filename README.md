@@ -8,39 +8,37 @@ Physics-informed NeuroAI research software for subject-specific modelling of who
 
 ## Project status
 
-**Pre-alpha Phase 02 engineering foundation.** The repository now implements validated configuration, privacy-aware provenance, immutable run directories, checksums, lifecycle markers, and safe resume for incomplete runs. It does not yet implement the scientific CausalNeuroTwin pipeline.
+**Pre-alpha Phase 03 public-dataset registration.** The repository implements a reproducible software and run foundation and pins one public OpenNeuro dataset. It does not yet validate scientific payloads, preprocess neuroimaging, simulate brain dynamics, or train a NeuroAI model.
 
 ### Implemented and tested
 
 - installable Python package using a `src/` layout;
 - `causalneurotwin doctor` environment diagnostic;
-- strict typed YAML configuration with rejection of missing and unknown fields;
-- independent seed policy and explicit SI time-unit fields;
-- immutable run identity and atomic run artefacts;
-- `RUNNING`, `RUN_COMPLETE`, and `RUN_FAILED` lifecycle markers;
-- safe resume only for incomplete runs with matching configuration;
-- privacy-aware environment, scheduler, package, hardware, Git, and command provenance;
-- streaming SHA-256 input and output checksums;
-- durable human-readable logs and JSONL events;
-- forbidden-data and secret-file repository scanner;
-- unit, integration, negative-path, type, lint, coverage, wheel-build, and CI checks;
-- contribution, governance, security, citation, and data-handling policies;
-- non-production Slurm templates for future CPU and GPU validation.
+- strict typed experiment configuration;
+- immutable run identity, provenance, checksums, logs, failure markers, and safe resume;
+- strict public-dataset registry schema;
+- OpenNeuro `ds004024`, version `1.0.1`, pinned by DOI;
+- local dataset identity and top-level metadata validation;
+- participant-table and subject-directory alignment checks;
+- anatomical T1w filename-layout checks;
+- non-sensitive modality inventory and validation reports;
+- repository scanner preventing tracked participant data, models, and secrets;
+- unit, integration, negative-path, privacy, build, and CI checks.
 
 ### Planned, not implemented
 
-- ingestion of HCP or OpenNeuro datasets;
-- BIDS validation and subject-level quality control;
-- anatomical and diffusion-MRI preprocessing;
+- automated acquisition of the full dataset;
+- official BIDS Validator execution;
+- image, EEG, fMRI, or DWI payload-readability checks;
+- subject/session inclusion and exclusion;
+- anatomical and diffusion preprocessing;
 - structural-connectome construction;
 - SimNIBS electric-field modelling;
-- The Virtual Brain integration;
-- mechanistic response simulation;
-- graph neural networks or neural operators;
-- model training, uncertainty estimation, or clinical validation;
+- The Virtual Brain or reference mechanistic simulation;
+- NeuroAI model training, uncertainty, or clinical validation;
 - measured multi-node or multi-GPU scaling.
 
-No documentation in this repository should be interpreted as evidence that a planned capability already exists.
+No planned capability should be interpreted as already implemented.
 
 ## Scientific objective
 
@@ -53,11 +51,7 @@ subject anatomy + structural connectome + baseline brain state
 time-resolved whole-brain response + calibrated uncertainty
 ```
 
-Phase 02 contains only the reproducibility and lifecycle contracts required to develop those components safely.
-
 ## Installation
-
-Python 3.11–3.13 is supported by the engineering foundation. Scientific dependencies introduced later may narrow this range.
 
 ```bash
 git clone https://github.com/eyasudesalegne/CausalNeuroTwin.git
@@ -85,7 +79,26 @@ causalneurotwin run-contract \
   --run-id phase02-validation
 ```
 
-This command validates configuration, provenance, logging, checksums, lifecycle state, and output immutability. It intentionally performs no scientific simulation or model training. See [docs/run-contract.md](docs/run-contract.md).
+## Phase 03 dataset registration
+
+CausalNeuroTwin registers OpenNeuro `ds004024` version `1.0.1`. Raw data remain outside Git.
+
+```bash
+causalneurotwin dataset validate \
+  --registry configs/data/openneuro_ds004024.yaml \
+  --dataset-root /path/to/ds004024-v1.0.1 \
+  --output-dir runs/dataset-registration-ds004024
+```
+
+Alternatively, place the dataset under
+
+```text
+${CAUSALNEUROTWIN_DATA_ROOT}/openneuro/ds004024-v1.0.1/
+```
+
+and omit `--dataset-root`.
+
+The Phase 03 command checks identity and layout only. A passing result does not mean the scientific payloads are BIDS-valid or analysis-ready.
 
 ## Repository verification
 
@@ -94,21 +107,9 @@ python scripts/verify_repository.py
 make verify
 ```
 
-## Repository layout
-
-```text
-src/causalneurotwin/   Installable package and run-contract implementation
-configs/               Version-controlled non-sensitive configuration examples
-docs/                  Scope, architecture, data policy, and run-contract documentation
-scripts/               Repository verification utilities
-tests/                 Unit, integration, lifecycle, privacy, and build tests
-hpc/                    Non-production Slurm templates
-.github/                CI, review, ownership, and issue templates
-```
-
 ## Data policy
 
-Raw or participant-level MRI, diffusion MRI, fMRI, EEG, MEG, clinical data, credentials, and controlled-data metadata must never be committed. Local data must remain outside the repository and be referenced through environment variables or local untracked configuration. See [docs/data-policy.md](docs/data-policy.md).
+Raw or participant-level MRI, diffusion MRI, fMRI, EEG, MEG, clinical data, credentials, and controlled-data metadata must never be committed. Local paths and participant attributes are omitted from generated registration reports. See [docs/data-policy.md](docs/data-policy.md).
 
 ## Responsible-use boundary
 
@@ -116,7 +117,7 @@ CausalNeuroTwin is research software. It is not a medical device, diagnostic sys
 
 ## Roadmap
 
-The next phase will register and validate one public dataset without committing participant-level data. Scientific processing begins only after dataset identity, licence, access, manifest, and subject-level QC are explicit.
+Phase 04 will run full BIDS and payload validation and produce explicit subject/session inclusion and exclusion reports before any preprocessing begins.
 
 ## Contributing and governance
 
@@ -124,7 +125,7 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md), [GOVERNANCE.md](GOVERNANCE.md), [SECURI
 
 ## Citation
 
-Citation metadata are provided in [CITATION.cff](CITATION.cff). Until an archived scientific release exists, cite the exact repository version and Git commit used.
+Citation metadata are provided in [CITATION.cff](CITATION.cff). Cite the exact repository version, Git commit, and dataset version used.
 
 ## Licence
 

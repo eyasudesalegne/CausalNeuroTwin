@@ -29,3 +29,9 @@ Phase 02: configuration, run contract, provenance, and logging
 Phase 03: public-dataset registry and validation
 Phase 04+: connectome, stimulation, simulation, learning, and HPC scaling
 ```
+
+## Dataset registry layer
+
+Phase 03 adds a strict registry that separates stable public metadata from local data placement. Registry entries pin dataset identity, version, DOI, licence, access class, BIDS version, expected top-level metadata, modalities, intended use, and prohibited use. Local validation emits only a path fingerprint and non-sensitive inventory; it never writes an absolute dataset root.
+
+This layer does not replace the official BIDS Validator or payload-level quality control.

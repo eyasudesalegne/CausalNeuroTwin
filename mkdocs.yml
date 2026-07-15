@@ -11,3 +11,5 @@ nav:
   - HPC development: hpc-development.md
   - GitHub setup: github-setup.md
   - Run contract: run-contract.md
+  - Datasets:
+      - OpenNeuro ds004024: datasets/ds004024.md

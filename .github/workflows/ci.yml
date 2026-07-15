@@ -59,5 +59,19 @@ jobs:
           cd .ci-runs/phase02-ci
           sha256sum -c checksums.sha256
 
+      - name: Create Phase 03 metadata-only fixture
+        run: |
+          python scripts/create_phase03_fixture.py \
+            --output .ci-dataset-root/openneuro/ds004024-v1.0.1
+
+      - name: Phase 03 dataset-registration check
+        run: |
+          causalneurotwin dataset validate \
+            --registry configs/data/openneuro_ds004024.yaml \
+            --dataset-root .ci-dataset-root/openneuro/ds004024-v1.0.1 \
+            --output-dir .ci-dataset-report
+          cd .ci-dataset-report
+          sha256sum -c checksums.sha256
+
       - name: Build source and wheel distributions
         run: python -m build

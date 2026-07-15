@@ -1,0 +1,54 @@
+schema_version: "1.0"
+dataset_id: ds004024
+dataset_version: "1.0.1"
+name: TMS-EEG-MRI-fMRI-DWI data on paired associative stimulation and connectivity (Shirley Ryan AbilityLab, Chicago, IL)
+description: >-
+  Cortico-cortical paired associative stimulation data from a bi-focal MRI-navigated
+  TMS-EEG study of left and right primary motor cortices, with structural MRI for all
+  participants and resting-state fMRI and/or HARDI diffusion MRI for subsets.
+source:
+  repository: OpenNeuro
+  landing_page: https://openneuro.org/datasets/ds004024
+  version_page: https://openneuro.org/datasets/ds004024/versions/1.0.1
+  doi: 10.18112/openneuro.ds004024.v1.0.1
+  mirror_repository: https://github.com/OpenNeuroDatasets/ds004024
+license:
+  identifier: CC0
+  redistributable: true
+  participant_level_data_in_git: false
+access:
+  access_type: public
+  authentication_required: false
+  environment_variable: CAUSALNEUROTWIN_DATA_ROOT
+  relative_path: openneuro/ds004024-v1.0.1
+bids:
+  version: "1.6.0"
+  dataset_type: raw
+modalities:
+  - anat
+  - eeg
+  - func
+  - dwi
+optional_per_subject_modalities:
+  - func
+  - dwi
+expected:
+  participant_count: 13
+  top_level_files:
+    - dataset_description.json
+    - participants.tsv
+    - participants.json
+    - README
+    - CHANGES
+  all_participants_require_t1w: true
+intended_use: >-
+  Research-only development and validation of reproducible TMS-EEG, anatomical MRI,
+  connectivity, mechanistic simulation, and NeuroAI workflows.
+prohibited_use: >-
+  Clinical diagnosis, treatment selection, autonomous stimulation control, subject
+  re-identification, or any representation that the dataset establishes clinical safety.
+acknowledgement: >-
+  Hernandez-Pavon JC, Schneider-Garces N, Begnoche JP, Miller LE, Raij T (2022),
+  Targeted modulation of human brain interregional effective connectivity with
+  spike-timing dependent plasticity.
+ethics_approval: STU00204239

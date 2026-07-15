@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the exact software version and Git commit used."
 title: "CausalNeuroTwin"
 type: software
-version: 0.2.0-alpha.1
+version: 0.3.0-alpha.1
 date-released: 2026-07-15
 authors:
   - family-names: Beyene

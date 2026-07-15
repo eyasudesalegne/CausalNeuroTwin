@@ -24,3 +24,7 @@ Before using a dataset, the project will record its exact version, source, licen
 ## Release review
 
 Derived data or model weights will require a separate review of source licences, re-identification risk, sensitive metadata, subgroup harm, and dual-use implications.
+
+## Phase 03 public registration
+
+A public dataset may be registered by accession, exact version, DOI, licence, expected participant count, and modality contract. The repository may store the registry and aggregate expectations, but not raw payloads, local absolute paths, access credentials, participant attributes, or locally derived participant-level scientific results. Runtime validation reports may use source pseudonyms for inventory alignment, but those reports remain outside Git.

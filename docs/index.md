@@ -1,6 +1,6 @@
 # CausalNeuroTwin documentation
 
-This documentation describes the Phase 01 repository foundation. Scientific data processing, simulation, NeuroAI training, and HPC benchmarks are planned but not implemented.
+This documentation describes the engineering foundation through Phase 03. One public dataset is pinned and locally registerable; scientific payload validation, preprocessing, simulation, NeuroAI training, and HPC benchmarks remain planned.
 
 Start with:
 
