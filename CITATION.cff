@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the exact software version and Git commit used."
+title: "CausalNeuroTwin"
+type: software
+version: 0.1.0-alpha.1
+date-released: 2026-07-15
+authors:
+  - family-names: Beyene
+    given-names: Eyasu Desalegne
+    orcid: "https://orcid.org/0009-0000-3375-0834"
+repository-code: "https://github.com/eyasudesalegne/CausalNeuroTwin"
+license: Apache-2.0
+keywords:
+  - NeuroAI
+  - computational neuroscience
+  - brain stimulation
+  - research software
+  - high-performance computing

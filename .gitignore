@@ -1,0 +1,64 @@
+# Python and packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Quality tools
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials/
+secrets/
+
+# Participant data and scientific artefacts
+raw_data/
+data/raw/
+data/interim/
+data/processed/
+data/external/
+runs/
+artifacts/
+checkpoints/
+logs/
+scratch/
+*.nii
+*.nii.gz
+*.mgz
+*.mgh
+*.edf
+*.bdf
+*.fif
+*.set
+*.vhdr
+*.eeg
+*.h5
+*.hdf5
+*.zarr/
+*.pt
+*.pth
+*.ckpt
+
+# Keep only documentation examples
+!configs/**/*.example.*

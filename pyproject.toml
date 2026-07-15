@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "causalneurotwin"
+version = "0.1.0a1"
+description = "Repository foundation for physics-informed NeuroAI brain-stimulation research."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+authors = [
+  {name = "Eyasu Desalegne Beyene", email = "e.beyene@ogr.iuc.edu.tr"}
+]
+keywords = [
+  "neuroai",
+  "computational-neuroscience",
+  "brain-stimulation",
+  "research-software",
+  "high-performance-computing"
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2,<2",
+  "mypy>=1.16,<2",
+  "pre-commit>=4,<5",
+  "pytest>=8,<9",
+  "pytest-cov>=6,<8",
+  "ruff>=0.12,<1"
+]
+docs = [
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9.6,<10"
+]
+
+[project.scripts]
+causalneurotwin = "causalneurotwin.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/eyasudesalegne/CausalNeuroTwin"
+Repository = "https://github.com/eyasudesalegne/CausalNeuroTwin"
+Issues = "https://github.com/eyasudesalegne/CausalNeuroTwin/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "build: package-build validation",
+  "integration: tests crossing module boundaries"
+]
+
+[tool.coverage.run]
+branch = true
+source = ["causalneurotwin"]
+omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 90
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src", "scripts"]

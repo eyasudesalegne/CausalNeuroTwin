@@ -1,0 +1,8 @@
+[project]
+name = "CausalNeuroTwin"
+stage = "repository-foundation"
+research_only = true
+
+[paths]
+data_root_environment_variable = "CAUSALNEUROTWIN_DATA_ROOT"
+output_root_environment_variable = "CAUSALNEUROTWIN_OUTPUT_ROOT"

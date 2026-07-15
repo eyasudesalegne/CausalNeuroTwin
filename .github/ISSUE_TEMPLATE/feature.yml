@@ -1,0 +1,28 @@
+name: Feature proposal
+description: Propose a focused scientific or technical capability
+title: "[FEATURE] "
+labels: ["type:feature", "status:triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What scientific or engineering problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and required tests
+    validations:
+      required: true
+  - type: textarea
+    id: implications
+    attributes:
+      label: Scientific, performance, data, and ethics implications

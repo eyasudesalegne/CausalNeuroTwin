@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or participant-data incident
+    url: https://github.com/eyasudesalegne/CausalNeuroTwin/security/policy
+    about: Do not report credentials or participant-data incidents publicly.

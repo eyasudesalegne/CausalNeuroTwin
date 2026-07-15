@@ -1,0 +1,12 @@
+site_name: CausalNeuroTwin
+site_description: Repository foundation for physics-informed NeuroAI research
+repo_url: https://github.com/eyasudesalegne/CausalNeuroTwin
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Current scope: current-scope.md
+  - Architecture: architecture.md
+  - Data policy: data-policy.md
+  - HPC development: hpc-development.md
+  - GitHub setup: github-setup.md
