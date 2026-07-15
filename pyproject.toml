@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "causalneurotwin"
-version = "0.1.0a1"
+version = "0.2.0a1"
 description = "Repository foundation for physics-informed NeuroAI brain-stimulation research."
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
@@ -29,7 +29,9 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering :: Artificial Intelligence"
 ]
-dependencies = []
+dependencies = [
+  "PyYAML>=6,<7"
+]
 
 [project.optional-dependencies]
 dev = [
@@ -38,7 +40,9 @@ dev = [
   "pre-commit>=4,<5",
   "pytest>=8,<9",
   "pytest-cov>=6,<8",
-  "ruff>=0.12,<1"
+  "ruff>=0.12,<1",
+  "setuptools>=77",
+  "types-PyYAML>=6,<7"
 ]
 docs = [
   "mkdocs>=1.6,<2",

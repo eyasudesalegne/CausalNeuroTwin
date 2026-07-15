@@ -62,3 +62,7 @@ scratch/
 
 # Keep only documentation examples
 !configs/**/*.example.*
+
+# Local validation run roots
+.ci-runs/
+.phase02-validation/

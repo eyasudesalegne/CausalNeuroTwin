@@ -8,17 +8,22 @@ Physics-informed NeuroAI research software for subject-specific modelling of who
 
 ## Project status
 
-**Pre-alpha repository foundation.** This release establishes the software-engineering, governance, testing, and HPC-development foundation. It does not yet implement the scientific CausalNeuroTwin pipeline.
+**Pre-alpha Phase 02 engineering foundation.** The repository now implements validated configuration, privacy-aware provenance, immutable run directories, checksums, lifecycle markers, and safe resume for incomplete runs. It does not yet implement the scientific CausalNeuroTwin pipeline.
 
 ### Implemented and tested
 
 - installable Python package using a `src/` layout;
 - `causalneurotwin doctor` environment diagnostic;
-- optional-dependency and accelerator detection;
-- privacy-preserving data-root status reporting;
-- writable-output verification;
+- strict typed YAML configuration with rejection of missing and unknown fields;
+- independent seed policy and explicit SI time-unit fields;
+- immutable run identity and atomic run artefacts;
+- `RUNNING`, `RUN_COMPLETE`, and `RUN_FAILED` lifecycle markers;
+- safe resume only for incomplete runs with matching configuration;
+- privacy-aware environment, scheduler, package, hardware, Git, and command provenance;
+- streaming SHA-256 input and output checksums;
+- durable human-readable logs and JSONL events;
 - forbidden-data and secret-file repository scanner;
-- unit tests, type checking, linting, coverage, wheel build, and CI;
+- unit, integration, negative-path, type, lint, coverage, wheel-build, and CI checks;
 - contribution, governance, security, citation, and data-handling policies;
 - non-production Slurm templates for future CPU and GPU validation.
 
@@ -48,11 +53,11 @@ subject anatomy + structural connectome + baseline brain state
 time-resolved whole-brain response + calibrated uncertainty
 ```
 
-The project is intended to combine public or properly authorised neuroimaging data, electromagnetic-field modelling, connectome-constrained dynamical simulation, and NeuroAI methods. Phase 01 contains only the repository foundation required to develop those components reproducibly.
+Phase 02 contains only the reproducibility and lifecycle contracts required to develop those components safely.
 
 ## Installation
 
-Python 3.11–3.13 is supported by the repository foundation. Scientific dependencies introduced in later phases may narrow this range.
+Python 3.11–3.13 is supported by the engineering foundation. Scientific dependencies introduced later may narrow this range.
 
 ```bash
 git clone https://github.com/eyasudesalegne/CausalNeuroTwin.git
@@ -68,55 +73,35 @@ python -m pip install -e '.[dev]'
 
 ```bash
 causalneurotwin doctor
-```
-
-Machine-readable output:
-
-```bash
 causalneurotwin doctor --json
 ```
 
-Optional local configuration:
+## Phase 02 run-contract validation
 
 ```bash
-export CAUSALNEUROTWIN_DATA_ROOT=/path/outside/the/repository
-causalneurotwin doctor --output-dir ./runs/doctor-check
+causalneurotwin run-contract \
+  --config configs/run_contract.example.yaml \
+  --output-root runs \
+  --run-id phase02-validation
 ```
 
-The diagnostic reports whether a data root is configured and usable, but it does not print the private path.
+This command validates configuration, provenance, logging, checksums, lifecycle state, and output immutability. It intentionally performs no scientific simulation or model training. See [docs/run-contract.md](docs/run-contract.md).
 
 ## Repository verification
 
 ```bash
 python scripts/verify_repository.py
-```
-
-The verification script rejects common participant-data, model-checkpoint, credential, and private-key file patterns. It is a safety control, not a substitute for human review.
-
-## Development checks
-
-```bash
-ruff check .
-ruff format --check .
-mypy src scripts
-pytest --cov=causalneurotwin --cov-report=term-missing
-python -m build
-```
-
-Or run the consolidated target:
-
-```bash
 make verify
 ```
 
 ## Repository layout
 
 ```text
-src/causalneurotwin/   Installable package
+src/causalneurotwin/   Installable package and run-contract implementation
 configs/               Version-controlled non-sensitive configuration examples
-docs/                  Scope, architecture, data policy, and HPC-development notes
+docs/                  Scope, architecture, data policy, and run-contract documentation
 scripts/               Repository verification utilities
-tests/                 Unit, CLI, scanner, and build tests
+tests/                 Unit, integration, lifecycle, privacy, and build tests
 hpc/                    Non-production Slurm templates
 .github/                CI, review, ownership, and issue templates
 ```
@@ -131,7 +116,7 @@ CausalNeuroTwin is research software. It is not a medical device, diagnostic sys
 
 ## Roadmap
 
-The next phase will add a typed configuration model, immutable run directories, provenance capture, structured logging, checksums, and failure-state handling. Scientific data processing starts only after those contracts are tested.
+The next phase will register and validate one public dataset without committing participant-level data. Scientific processing begins only after dataset identity, licence, access, manifest, and subject-level QC are explicit.
 
 ## Contributing and governance
 

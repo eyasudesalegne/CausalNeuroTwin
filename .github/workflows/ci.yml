@@ -50,5 +50,14 @@ jobs:
       - name: Foundation smoke check
         run: causalneurotwin doctor --json
 
+      - name: Phase 02 run-contract check
+        run: |
+          causalneurotwin run-contract \
+            --config configs/run_contract.example.yaml \
+            --output-root .ci-runs \
+            --run-id phase02-ci
+          cd .ci-runs/phase02-ci
+          sha256sum -c checksums.sha256
+
       - name: Build source and wheel distributions
         run: python -m build
