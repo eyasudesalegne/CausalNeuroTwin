@@ -19,24 +19,43 @@ jobs:
           ref: phase-03-public-dataset-registration
           fetch-depth: 0
 
-      - name: Apply verified Phase 03 diff
-        shell: bash
+      - name: Validate payload parts
         run: |
           set -euo pipefail
           test -f .phase03_diff.ready
           test -f .phase03_diff.part00
+          test -f .phase03_diff.part01
+          test -f .phase03_diff.part02
+
+      - name: Decode and verify payload
+        run: |
+          set -euo pipefail
           cat .phase03_diff.part* > /tmp/phase03-diff.tar.xz.b64
           base64 --decode /tmp/phase03-diff.tar.xz.b64 > /tmp/phase03-diff.tar.xz
           echo "31524922199713d1728f9ada34048059e5f7d11b4e91223021ec0d97108a0989  /tmp/phase03-diff.tar.xz" | sha256sum -c -
+
+      - name: Extract and validate Phase 03 tree
+        run: |
+          set -euo pipefail
           tar -xJf /tmp/phase03-diff.tar.xz -C .
           test -f PHASE_03_REPORT.md
           test -f src/causalneurotwin/datasets.py
+
+      - name: Preserve workflows and clean payload files
+        run: |
+          set -euo pipefail
           git checkout HEAD -- .github/workflows/ci.yml .github/workflows/apply-phase03-payload.yml
           rm -f .phase03_diff.part* .phase03_diff.ready
           rm -f .phase03_fixed.part* .phase03_fixed.ready
           rm -f .phase03_payload.part* .phase03_payload.ready
+
+      - name: Commit Phase 03 tree
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "feat: register OpenNeuro ds004024 for Phase 03"
-          git push origin HEAD:phase-03-public-dataset-registration
+
+      - name: Push Phase 03 tree
+        run: git push origin HEAD:phase-03-public-dataset-registration
