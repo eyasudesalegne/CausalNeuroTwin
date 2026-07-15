@@ -2,6 +2,8 @@
 
 Committed configurations must be non-sensitive, versioned, and validated.
 
-Phase 02 uses `run_contract.example.yaml` to exercise the complete configuration and run lifecycle without participant data or scientific computation. Absolute private paths, credentials, and participant identifiers are prohibited. Future dataset locations must be supplied through environment variables or local untracked files.
+- `run_contract.example.yaml` exercises the Phase 02 run lifecycle without participant data.
+- `data/openneuro_ds004024.yaml` pins the Phase 03 public dataset registration to OpenNeuro ds004024 version 1.0.1.
+- `project.example.toml` is retained as the Phase 01 diagnostic example.
 
-`project.example.toml` is retained as the Phase 01 diagnostic example; it is not the Phase 02 run schema.
+Absolute private paths, credentials, and participant-level data are prohibited. Dataset locations are supplied by `CAUSALNEUROTWIN_DATA_ROOT` or an explicit CLI argument that is never written to reports.

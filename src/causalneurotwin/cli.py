@@ -9,6 +9,13 @@ from pathlib import Path
 
 from causalneurotwin import __version__
 from causalneurotwin.config import ConfigError, load_config
+from causalneurotwin.datasets import (
+    DatasetRegistryError,
+    load_dataset_registry,
+    resolve_dataset_root,
+    validate_local_dataset,
+    write_dataset_validation_report,
+)
 from causalneurotwin.doctor import build_report, render_human, resolve_data_root, resolve_output_dir
 from causalneurotwin.run_contract import RunContractError, execute_contract_demo
 
@@ -64,6 +71,35 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help=argparse.SUPPRESS,
     )
+
+    dataset = subparsers.add_parser(
+        "dataset",
+        help="Register and validate public datasets without committing participant data.",
+    )
+    dataset_subparsers = dataset.add_subparsers(dest="dataset_command", required=True)
+    validate = dataset_subparsers.add_parser(
+        "validate",
+        help="Validate a pinned dataset registry against a local copy.",
+    )
+    validate.add_argument(
+        "--registry",
+        type=Path,
+        required=True,
+        help="Versioned dataset registry YAML.",
+    )
+    validate.add_argument(
+        "--dataset-root",
+        type=Path,
+        default=None,
+        help="Explicit local dataset root. The path is never written to reports.",
+    )
+    validate.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Directory for non-sensitive validation reports.",
+    )
+    validate.add_argument("--json", action="store_true", help="Emit validation JSON to stdout.")
     return parser
 
 
@@ -98,6 +134,37 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         print(f"Run bundle completed: {run_dir.name}")
         return 0
+    if arguments.command == "dataset" and arguments.dataset_command == "validate":
+        try:
+            registry = load_dataset_registry(arguments.registry)
+            dataset_root, root_source = resolve_dataset_root(
+                registry,
+                explicit_root=arguments.dataset_root,
+            )
+            validation = validate_local_dataset(
+                registry,
+                dataset_root,
+                root_source=root_source,
+            )
+            write_dataset_validation_report(
+                registry=registry,
+                validation=validation,
+                dataset_root=dataset_root,
+                registry_path=arguments.registry,
+                output_dir=arguments.output_dir,
+            )
+        except (DatasetRegistryError, OSError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        if arguments.json:
+            print(json.dumps(validation.to_dict(), indent=2, sort_keys=True))
+        else:
+            print(
+                f"Dataset registration {validation.status}: "
+                f"{validation.dataset_id} v{validation.dataset_version}"
+            )
+            print(f"Reports: {arguments.output_dir.name}")
+        return 0 if validation.status == "pass" else 1
     return 2
 
 

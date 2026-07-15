@@ -1,15 +1,15 @@
-# Phase 02 validation results
+# Phase 03 validation results
 
-Validation was executed on **15 July 2026** in a clean virtual environment.
+Validation was executed on **15 July 2026** in a clean Linux environment.
 
 ## Tested environment
 
 - Operating system: Linux x86_64
 - Python: 3.13.5
-- Package version: 0.2.0a1
+- Package version: 0.3.0a1
 - Test runner: pytest 8.4.2
 
-Python 3.11 and 3.12 are configured in GitHub Actions. They were not available in the local validation environment and must be confirmed by repository CI.
+Python 3.11 and 3.12 are configured in GitHub Actions and must be confirmed by the Phase 03 pull-request CI before merge.
 
 ## Results
 
@@ -20,20 +20,33 @@ Python 3.11 and 3.12 are configured in GitHub Actions. They were not available i
 | Ruff lint | Passed |
 | Ruff formatting check | Passed |
 | Strict mypy check | Passed |
-| Automated tests | **63 passed** |
-| Branch-aware coverage | **94.00%** |
+| Automated tests | **78 passed** |
+| Branch-aware coverage | **92.86%** |
 | Source distribution build | Passed |
 | Wheel build | Passed |
 | `causalneurotwin doctor --json` | Passed |
 | Phase 02 successful run lifecycle | Passed |
-| Intentional failure and safe resume lifecycle | Passed in automated tests |
-| Run-bundle SHA-256 verification with `sha256sum -c` | Passed |
-| Provenance private-path check | Passed |
+| Phase 03 metadata-only fixture generation | Passed |
+| Phase 03 dataset registration validation | Passed |
+| Generated report SHA-256 verification | Passed |
+| Validation-report private-path check | Passed |
+| Participant-attribute omission check | Passed |
 
-## Verified Phase 02 output
+## Verified Phase 03 outputs
 
-The validation run produced `resolved_config.yaml`, `environment.json`, `input_manifest.json`, `provenance.json`, human and JSONL logs, `metrics.json`, `checksums.sha256`, and `RUN_COMPLETE`. Every entry in the checksum manifest verified successfully.
+The metadata-only validation run produced:
+
+```text
+dataset_validation.json
+dataset_validation.md
+registry_snapshot.json
+subject_modality_inventory.tsv
+source_metadata_checksums.sha256
+checksums.sha256
+```
+
+Every generated-output checksum verified successfully.
 
 ## Correct interpretation
 
-These results validate configuration, provenance, logging, checksums, failure states, immutability, and resume behavior. They do not validate neuroimaging processing, connectome construction, brain stimulation modelling, mechanistic brain simulation, NeuroAI performance, clinical utility, or HPC scalability because those capabilities remain unimplemented.
+These results validate the dataset-registry schema, ds004024 identity contract, local metadata and layout checks, privacy controls, report generation, and CLI behavior. They do not validate the real OpenNeuro payloads, official BIDS compliance, NIfTI or EEG readability, DWI gradients, session completeness, scientific quality, preprocessing, connectome construction, stimulation modelling, NeuroAI performance, clinical utility, or HPC scalability.

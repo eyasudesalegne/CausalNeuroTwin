@@ -8,6 +8,24 @@ All notable changes are recorded here. The project follows semantic versioning o
 
 - Public dataset registry and non-sensitive manifest validation.
 
+## [0.3.0-alpha.1] - 2026-07-15
+
+### Added
+
+- Strict public-dataset registry schema.
+- OpenNeuro ds004024 version 1.0.1 registration pinned by DOI.
+- Environment-variable and explicit-root dataset resolution without path disclosure.
+- Local dataset identity, top-level metadata, participant-table, subject-directory, and T1w layout validation.
+- Non-sensitive subject modality inventory.
+- JSON, Markdown, TSV, source-metadata checksum, and output checksum reports.
+- Metadata-only synthetic ds004024 fixture generator for tests and CI.
+- `causalneurotwin dataset validate` CLI command.
+- Phase 03 tests for metadata mismatch, missing subjects, missing T1w layout, privacy, registry validation, and CLI behavior.
+
+### Not included
+
+- Full BIDS validation, payload readability, subject selection, preprocessing, simulation, or model training.
+
 ## [0.2.0-alpha.1] - 2026-07-15
 
 ### Added

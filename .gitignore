@@ -66,3 +66,8 @@ scratch/
 # Local validation run roots
 .ci-runs/
 .phase02-validation/
+
+# Phase 03 local validation fixtures and reports
+.ci-dataset-root/
+.ci-dataset-report/
+.phase03-validation/

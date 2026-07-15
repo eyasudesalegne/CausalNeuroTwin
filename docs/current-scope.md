@@ -1,19 +1,18 @@
 # Current scope
 
-## Implemented through Phase 02
+## Implemented through Phase 03
 
 - installable Python package and CLI;
 - environment diagnostic;
-- strict typed YAML configuration;
-- immutable run IDs and run directories;
-- atomic serialisation;
-- structured logs and lifecycle markers;
-- privacy-aware provenance;
-- input and output SHA-256 checksums;
-- safe resume for matching incomplete runs;
+- strict typed experiment configuration;
+- immutable run IDs, provenance, checksums, and lifecycle markers;
+- strict public-dataset registry schema;
+- OpenNeuro ds004024 version 1.0.1 registration;
+- local dataset identity, participant-directory, and modality-layout checks;
+- non-sensitive JSON, TSV, Markdown, and checksum reports;
 - repository data/secret scanner;
-- automated quality and build checks.
+- automated quality, test, and package-build checks.
 
 ## Not implemented
 
-No participant dataset, BIDS pipeline, connectome, electric-field simulation, whole-brain model, NeuroAI model, clinical validation, or measured HPC scaling is present.
+Full BIDS validation, readable-payload validation, subject inclusion/exclusion, preprocessing, connectome construction, electric-field modelling, whole-brain simulation, NeuroAI model training, clinical validation, and measured HPC scaling are not implemented.
