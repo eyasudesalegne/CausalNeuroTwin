@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "example_kind": "synthetic_algorithm_controls",
+  "wp2": {
+    "b0_max": 50,
+    "bval_tolerance": 2,
+    "bvec_norm_tolerance": 0.02,
+    "gradient_angle_tolerance_deg": 1,
+    "shell_width": 500,
+    "low_motion_fd_mm": 1,
+    "minimum_retained_fraction": 0.6,
+    "minimum_directions": 64,
+    "minimum_b0": 3,
+    "maximum_matching_angle_deg": 15,
+    "coverage_angle_p95_deg": 25,
+    "maximum_design_condition": 100,
+    "matching_motion_difference_mm": 0.2,
+    "seed": 20261017,
+    "raw_volume_identity_verified": false,
+    "maximum_conditions": 3
+  },
+  "wp3": {
+    "tvb_version": "2.10.0",
+    "gain": 40,
+    "speed_mm_ms": 4,
+    "dt_ms": [
+      0.1,
+      0.05,
+      0.025
+    ],
+    "warmups_ms": [
+      1000,
+      2000,
+      4000
+    ],
+    "seeds": [
+      20261012,
+      20261013,
+      20261014
+    ],
+    "analysis_ms": 2000,
+    "monitor_ms": 1,
+    "thresholds": {
+      "nrmse": 0.05,
+      "relative_std": 0.05,
+      "peak_frequency_hz": 1,
+      "relative_bandpower": 0.05
+    },
+    "interpretation": "Provisional numerical acceptance; not physiology or TMS-response validation",
+    "refinement": {
+      "relative_slack": 0.05,
+      "absolute_floor": 1e-07,
+      "status": "provisional numerical triage; empirical float32/delay floor not established"
+    }
+  }
+}

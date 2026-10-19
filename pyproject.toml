@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools>=77", "wheel", "packaging>=24.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -34,6 +34,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+scientific = [
+  "numpy>=2,<3",
+  "scipy>=1.13,<2",
+  "nibabel>=5.2,<6",
+  "matplotlib>=3.8,<4"
+]
+tvb = ["tvb-library==2.10.0", "numba>=0.60,<1"]
 dev = [
   "build>=1.2,<2",
   "mypy>=1.16,<2",
@@ -42,6 +49,7 @@ dev = [
   "pytest-cov>=6,<8",
   "ruff>=0.12,<1",
   "setuptools>=77",
+  "packaging>=24.2",
   "types-PyYAML>=6,<7"
 ]
 docs = [
@@ -68,13 +76,14 @@ addopts = "-ra --strict-config --strict-markers"
 testpaths = ["tests"]
 markers = [
   "build: package-build validation",
-  "integration: tests crossing module boundaries"
+  "integration: tests crossing module boundaries",
+  "allocated: requires separately authorized scientific runtime on a compute node"
 ]
 
 [tool.coverage.run]
 branch = true
 source = ["causalneurotwin"]
-omit = ["*/__main__.py"]
+omit = ["*/__main__.py", "*/validation/*"] # Foundation coverage; scientific scope is separate
 
 [tool.coverage.report]
 show_missing = true
@@ -97,3 +106,12 @@ indent-style = "space"
 python_version = "3.11"
 strict = true
 files = ["src", "scripts"]
+
+# Migrated dynamic numerical kernels are tested separately; foundation typing stays strict.
+[[tool.mypy.overrides]]
+module = ["causalneurotwin.validation.*"]
+ignore_errors = true
+
+[tool.ruff.lint.per-file-ignores]
+"src/causalneurotwin/validation/**/*.py" = ["E501", "E731", "E741", "B905", "RUF005"]
+"tests/scientific/**/*.py" = ["E501", "E731", "E741", "B905", "RUF005"]

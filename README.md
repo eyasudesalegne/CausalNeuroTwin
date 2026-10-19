@@ -1,131 +1,65 @@
 # CausalNeuroTwin
+Research software for subject-specific brain reconstruction, computational validation and future stimulation-response prediction.
 
-[![CI](https://github.com/eyasudesalegne/CausalNeuroTwin/actions/workflows/ci.yml/badge.svg)](https://github.com/eyasudesalegne/CausalNeuroTwin/actions/workflows/ci.yml)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-pre--alpha-orange.svg)](#project-status)
+This development branch extends the Phase 02 engineering foundation with reusable anatomical, parcellation, diffusion/connectome and TVB numerical-verification modules. Restricted project reconstructions and computational QC runs exist separately. They are not distributed as repository data.
 
-Physics-informed NeuroAI research software for subject-specific modelling of whole-brain responses to non-invasive brain stimulation.
+## Implemented engineering
+The original configuration, immutable run-contract, provenance, checksums and diagnostic CLI remain available. Scientific code now lives once under `src/causalneurotwin/validation/`:
+- physical MRI/GIFTI geometry, tissue-distance and mesh-quality calculations;
+- independent-review handling and Brainnetome seed/completion distinctions;
+- gradient-frame, motion-feasibility and endpoint/pass comparison helpers;
+- precision-aware TVB history, delayed-coupling, monitor and numerical-observation checks;
+- cortical-source, atlas-mapping and connectome-definition sensitivity methods;
+- guarded synthetic smoke and optional SimNIBS forward interfaces;
+- held-out metric/split safeguards, disclosure-reviewed experiment-record contracts and staged-blob publication checks.
 
-## Project status
+## Scientific status
+| Component | Status and boundary |
+|---|---|
+| Restricted reconstruction and anatomical QC | Computational runs completed in the research project; independent anatomical acceptance remains pending |
+| DWI/connectome QC | Existing derivative/provenance audits completed; high motion and reconstruction uncertainty remain limitations |
+| Gradient conventions | Prior apparent frame mismatch resolved through documented conventions; this does not establish edge truth |
+| TVB history adapter | Implemented and tested on synthetic references; installed-runtime compatibility remains pending |
+| Deployed TVB v1.2 smoke | Submission stopped during preflight: provenance accesses a DWI field absent from synthetic configuration; no job ran |
+| This branch's smoke entry | Uses explicit synthetic provenance and has a stub-runner regression; it has not been deployed or runtime-validated |
+| Intrinsic convergence | Eight-condition design prepared; real-network timestep/stability/initial-state testing remains pending |
+| Structural sensitivity | Methods and synthetic tests implemented; subject-level execution and held-out prediction remain pending |
+| Experimental stimulation | Original Cool-B70 demonstration is frozen; matched C-B60 pose/dose evidence is incomplete |
+| Measured EEG | Available in approved research storage; artifact handling, registration and predictive validation are separate gates |
+| Physiological prediction | No claim of subject-specific biological calibration or validated measured-response prediction |
 
-**Pre-alpha Phase 02 engineering foundation.** The repository now implements validated configuration, privacy-aware provenance, immutable run directories, checksums, lifecycle markers, and safe resume for incomplete runs. It does not yet implement the scientific CausalNeuroTwin pipeline.
+Successful execution, finite signals, derivative agreement and improved fit do not by themselves establish anatomical or physiological validity.
 
-### Implemented and tested
-
-- installable Python package using a `src/` layout;
-- `causalneurotwin doctor` environment diagnostic;
-- strict typed YAML configuration with rejection of missing and unknown fields;
-- independent seed policy and explicit SI time-unit fields;
-- immutable run identity and atomic run artefacts;
-- `RUNNING`, `RUN_COMPLETE`, and `RUN_FAILED` lifecycle markers;
-- safe resume only for incomplete runs with matching configuration;
-- privacy-aware environment, scheduler, package, hardware, Git, and command provenance;
-- streaming SHA-256 input and output checksums;
-- durable human-readable logs and JSONL events;
-- forbidden-data and secret-file repository scanner;
-- unit, integration, negative-path, type, lint, coverage, wheel-build, and CI checks;
-- contribution, governance, security, citation, and data-handling policies;
-- non-production Slurm templates for future CPU and GPU validation.
-
-### Planned, not implemented
-
-- ingestion of HCP or OpenNeuro datasets;
-- BIDS validation and subject-level quality control;
-- anatomical and diffusion-MRI preprocessing;
-- structural-connectome construction;
-- SimNIBS electric-field modelling;
-- The Virtual Brain integration;
-- mechanistic response simulation;
-- graph neural networks or neural operators;
-- model training, uncertainty estimation, or clinical validation;
-- measured multi-node or multi-GPU scaling.
-
-No documentation in this repository should be interpreted as evidence that a planned capability already exists.
-
-## Scientific objective
-
-The long-term research objective is to study the mapping
-
-```text
-subject anatomy + structural connectome + baseline brain state
-+ stimulation field + stimulation protocol
-                         ↓
-time-resolved whole-brain response + calibrated uncertainty
-```
-
-Phase 02 contains only the reproducibility and lifecycle contracts required to develop those components safely.
-
-## Installation
-
-Python 3.11–3.13 is supported by the engineering foundation. Scientific dependencies introduced later may narrow this range.
-
+## Installation and safe tests
+Python 3.11–3.13 supports the engineering foundation. Optional scientific-runtime support may be narrower. No participant dataset or scientific result is included.
 ```bash
-git clone https://github.com/eyasudesalegne/CausalNeuroTwin.git
-cd CausalNeuroTwin
-
-python -m venv .venv
-source .venv/bin/activate        # Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e '.[dev]'
-```
-
-## Environment diagnostic
-
-```bash
-causalneurotwin doctor
-causalneurotwin doctor --json
-```
-
-## Phase 02 run-contract validation
-
-```bash
-causalneurotwin run-contract \
-  --config configs/run_contract.example.yaml \
-  --output-root runs \
-  --run-id phase02-validation
-```
-
-This command validates configuration, provenance, logging, checksums, lifecycle state, and output immutability. It intentionally performs no scientific simulation or model training. See [docs/run-contract.md](docs/run-contract.md).
-
-## Repository verification
-
-```bash
+python -m pip install -e ".[dev,scientific]"
+python -m pytest --ignore=tests/scientific
+python -m pytest tests/scientific -m "not allocated"
 python scripts/verify_repository.py
-make verify
 ```
+TVB/SimNIBS runtime checks are separate and require approved installed environments. Ordinary tests use generated nonparticipant fixtures. CI does not submit jobs or integrate TVB.
 
-## Repository layout
+The Phase 02 CLI remains:
+```bash
+causalneurotwin doctor --json
+causalneurotwin run-contract --config configs/run_contract.example.yaml --output-root runs --run-id example
+```
+The run-contract command exercises engineering lifecycle contracts only.
 
+## Reproducibility and publication
+See [scientific methods](docs/scientific-validation.md), [scope](docs/current-scope.md), [migration audit](docs/scientific-sync.md), [experiment records](docs/experiment-records.md), and [predictive protocol](docs/predictive-validation.md).
+
+Keep private configuration, real input manifests, scheduler metadata and result bundles outside Git. Publish sanitized experiment records only after explicit disclosure review. Old uncommitted runs must never be assigned a later Git SHA retrospectively.
+
+## Layout
 ```text
-src/causalneurotwin/   Installable package and run-contract implementation
-configs/               Version-controlled non-sensitive configuration examples
-docs/                  Scope, architecture, data policy, and run-contract documentation
-scripts/               Repository verification utilities
-tests/                 Unit, integration, lifecycle, privacy, and build tests
-hpc/                    Non-production Slurm templates
-.github/                CI, review, ownership, and issue templates
+src/causalneurotwin/validation/  Canonical reusable scientific code
+configs/                       Synthetic controls and empty record examples
+tests/scientific/              Nonparticipant tests and separately marked runtime checks
+docs/                          Methods, status, limitations and data policy
+hpc/                           Non-production templates; no submission helper
+scripts/                       Repository and staged-publication verification
 ```
 
-## Data policy
-
-Raw or participant-level MRI, diffusion MRI, fMRI, EEG, MEG, clinical data, credentials, and controlled-data metadata must never be committed. Local data must remain outside the repository and be referenced through environment variables or local untracked configuration. See [docs/data-policy.md](docs/data-policy.md).
-
-## Responsible-use boundary
-
-CausalNeuroTwin is research software. It is not a medical device, diagnostic system, treatment-selection system, stimulation controller, or substitute for qualified clinical judgement. It must not be used to apply stimulation to a human participant.
-
-## Roadmap
-
-The next phase will register and validate one public dataset without committing participant-level data. Scientific processing begins only after dataset identity, licence, access, manifest, and subject-level QC are explicit.
-
-## Contributing and governance
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md), [GOVERNANCE.md](GOVERNANCE.md), [SECURITY.md](SECURITY.md), and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
-
-## Citation
-
-Citation metadata are provided in [CITATION.cff](CITATION.cff). Until an archived scientific release exists, cite the exact repository version and Git commit used.
-
-## Licence
-
-Original repository code is licensed under the Apache License 2.0. External software and datasets retain their own licences and data-use conditions.
+CausalNeuroTwin is research software, not a medical device, stimulation controller or clinical decision system.

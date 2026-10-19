@@ -11,3 +11,7 @@ nav:
   - HPC development: hpc-development.md
   - GitHub setup: github-setup.md
   - Run contract: run-contract.md
+  - Scientific methods: scientific-validation.md
+  - Synchronization audit: scientific-sync.md
+  - Experiment records: experiment-records.md
+  - Predictive validation: predictive-validation.md

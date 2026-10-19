@@ -66,3 +66,24 @@ scratch/
 # Local validation run roots
 .ci-runs/
 .phase02-validation/
+
+# Restricted research evidence and private reproducibility records
+.test_artifacts/
+review_exports/
+*Expert_Review*/
+results/
+validation_runs/
+private_configs/
+private_records/
+local_audit/
+*.npy
+*.npz
+*.gii
+*.msh
+*.mat
+*.zip
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf

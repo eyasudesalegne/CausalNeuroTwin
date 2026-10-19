@@ -1,19 +1,15 @@
 # Current scope
+The Phase 02 engineering contracts remain implemented. This branch additionally integrates reusable scientific verification and sensitivity modules.
 
-## Implemented through Phase 02
+## Completed implementation
+Anatomical physical-coordinate, mesh, review and surface-distance methods; atlas mapping diagnostics; gradient/motion/connectome methods; TVB history/numerical observers; structural source/atlas/network sensitivity; observation interfaces; predictive metrics and leakage checks; publication and provenance contracts.
 
-- installable Python package and CLI;
-- environment diagnostic;
-- strict typed YAML configuration;
-- immutable run IDs and run directories;
-- atomic serialisation;
-- structured logs and lifecycle markers;
-- privacy-aware provenance;
-- input and output SHA-256 checksums;
-- safe resume for matching incomplete runs;
-- repository data/secret scanner;
-- automated quality and build checks.
+## Completed computational experiments outside this checkout
+The project has subject-specific reconstructions, anatomical QC bundles, diffusion/connectome provenance audits and frozen demonstration/control simulations. They remain in approved restricted storage and are not bundled here. Computational completion does not imply independent anatomical acceptance, reliable individual edges or physiological calibration.
 
-## Not implemented
+## Pending
+Installed-runtime TVB history compatibility; real-network intrinsic convergence and stability; independent anatomical review; measured-electrode/MRI registration acceptance; matched experimental C-B60 pose and dose; artifact-controlled, held-out EEG prediction.
 
-No participant dataset, BIDS pipeline, connectome, electric-field simulation, whole-brain model, NeuroAI model, clinical validation, or measured HPC scaling is present.
+The deployed v1.2 smoke did not run: preflight identified a missing DWI key in provenance generation. A separate source integration entry uses explicit synthetic provenance and a regression test, but is not a deployed correction or evidence of runtime compatibility.
+
+No production reconstruction pipeline, raw participant dataset, newly generated TMS field, trained predictive model or validated clinical capability is distributed here.

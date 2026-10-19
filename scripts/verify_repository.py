@@ -12,16 +12,19 @@ if str(SOURCE_ROOT) not in sys.path:
     sys.path.insert(0, str(SOURCE_ROOT))
 
 from causalneurotwin.forbidden_data import scan_repository  # noqa: E402
+from causalneurotwin.publication import scan_staged  # noqa: E402
 
 
 def main() -> int:
-    findings = scan_repository(REPOSITORY_ROOT, tracked_only=True)
+    findings = scan_repository(REPOSITORY_ROOT, tracked_only=True) + scan_staged(REPOSITORY_ROOT)
     if findings:
         print("Repository verification failed. Prohibited files were detected:", file=sys.stderr)
         for finding in findings:
             print(f"- {finding.relative_path}: {finding.reason}", file=sys.stderr)
         return 1
-    print("Repository verification passed: no prohibited tracked artefacts detected.")
+    print(
+        "Repository verification passed: no prohibited tracked paths or staged contents detected."
+    )
     return 0
 
 

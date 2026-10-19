@@ -44,7 +44,7 @@ The loader rejects:
 - absolute or parent-traversing manifest paths;
 - unsupported checksum algorithms.
 
-The simulation, model, training, and evaluation sections are reserved contracts. They are disabled in the Phase 02 example because those scientific capabilities do not yet exist.
+The simulation, model, training, and evaluation sections are reserved lifecycle contracts. The Phase 02 example intentionally does not invoke the reusable scientific validation modules or restricted project workflows.
 
 ## Provenance and privacy
 
@@ -64,4 +64,4 @@ It does not record usernames, home-directory paths, access tokens, credentials, 
 
 A completed run cannot be resumed or overwritten. An incomplete run can be resumed only when its configuration digest exactly matches the original run identity. Resume appends a new attempt record while preserving prior logs and failure evidence.
 
-Phase 02 does not promise general checkpoint recovery for scientific arrays because those arrays are not implemented yet. It establishes the lifecycle contract future commands must use.
+The Phase 02 run contract does not define general checkpoint recovery for scientific arrays. Scientific validation modules and restricted result bundles are separate; production scientific runners still require explicit lifecycle integration.

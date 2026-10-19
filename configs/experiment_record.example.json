@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_id": "synthetic_record_template",
+  "status": "draft",
+  "git_commit": null,
+  "git_dirty": null,
+  "config_version": null,
+  "config_sha256": null,
+  "software_versions": {},
+  "code_manifest_sha256": null,
+  "input_integrity_manifest_sha256": null,
+  "slurm_job_id": null,
+  "result_manifest_sha256": null,
+  "disclosure_review": {
+    "approved": false,
+    "reviewer": "",
+    "date": "",
+    "scope": ""
+  },
+  "linkage": "unlinked"
+}

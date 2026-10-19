@@ -22,3 +22,12 @@ def test_manifest_is_sorted_and_excludes_itself(tmp_path: Path) -> None:
     assert lines[0].endswith("  a.txt")
     assert lines[1].endswith("  b.txt")
     assert all("checksums.sha256" not in line for line in lines)
+
+
+def test_manifest_uses_lf_on_every_platform(tmp_path: Path) -> None:
+    source = tmp_path / "source.txt"
+    source.write_text("synthetic", encoding="utf-8")
+    manifest = tmp_path / "manifest.sha256"
+    write_checksum_manifest(tmp_path, [source], manifest)
+    assert b"\r" not in manifest.read_bytes()
+    assert manifest.read_bytes().endswith(b"\n")

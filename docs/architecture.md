@@ -1,31 +1,17 @@
 # Architecture
+The original CLI, doctor, typed run configuration, immutable lifecycle, checksum and privacy-aware provenance modules remain the engineering foundation.
 
-## Phase 01 boundaries
+Scientific algorithms are installed under a single namespace:
+- validation.anatomy: MRI/GIFTI physical geometry, mesh metrics, evidence/review utilities.
+- validation.anatomy_addendum: boundary-distance, cluster, parcel and mesh-localization methods reusing anatomy.
+- validation.readiness: diffusion/connectome and TVB history/numerical methods.
+- validation.structural: reviewed source selections, exact region order, mapping/network alternatives and held-out metrics.
+- validation.interfaces: optional SimNIBS normal-projection/forward boundary.
+- validation.artifacts: shared exclusive writes, path and allocated-node guards, reusing foundation checksums.
+- experiment_records and publication: strict disclosure/linkage validation and inspection of exact staged Git blobs.
 
-The package currently contains only three stable concerns:
+Imports use the installed package. No code imports the sibling sealed-release directories or mutates sys.path to load private scientific code. Subject-specific Slurm/configuration/deployment wrappers remain outside this migration. The source-port inventory documents exclusions.
 
-1. **CLI** — user-facing command dispatch.
-2. **Doctor** — privacy-preserving runtime inspection.
-3. **Repository safety** — detection of prohibited artefacts.
+Dynamic scientific kernels retain their source mathematical algorithms; namespace changes, formatting and shared IO are migration changes. Strict typing/coverage claims for the foundation do not automatically extend to optional external-tool adapters. CI reports these scopes separately.
 
-Scientific modules are intentionally absent until their data contracts, validation criteria, and provenance requirements are specified.
-
-## Design principles
-
-- install the package rather than manipulating `PYTHONPATH`;
-- keep external-tool integration behind explicit adapters;
-- use typed inputs and outputs;
-- keep configuration outside algorithm code;
-- fail visibly on invalid or incomplete output;
-- distinguish implemented behavior from planned architecture;
-- keep raw participant data outside Git;
-- measure performance rather than assume scaling.
-
-## Planned progression
-
-```text
-Phase 01: package and safety foundation
-Phase 02: configuration, run contract, provenance, and logging
-Phase 03: public-dataset registry and validation
-Phase 04+: connectome, stimulation, simulation, learning, and HPC scaling
-```
+Scientific-runtime checks require explicit allocated-node approval. They are not part of ordinary CI. No integration or remote submission is triggered by package import.

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any, Literal, TypeVar, cast
 
 import yaml
@@ -74,11 +74,11 @@ def _optional_path(value: object, location: str) -> str | None:
         return None
     result = _string(value, location)
     candidate = Path(result)
-    if candidate.is_absolute():
+    if PurePosixPath(result).is_absolute() or PureWindowsPath(result).anchor:
         raise ConfigError(
             f"{location} must be relative or provided through an environment variable"
         )
-    if ".." in candidate.parts:
+    if ".." in PureWindowsPath(result).parts or ".." in PurePosixPath(result).parts:
         raise ConfigError(f"{location} must not escape its configured root")
     return candidate.as_posix()
 
