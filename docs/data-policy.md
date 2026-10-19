@@ -24,3 +24,10 @@ Before using a dataset, the project will record its exact version, source, licen
 ## Release review
 
 Derived data or model weights will require a separate review of source licences, re-identification risk, sensitive metadata, subgroup harm, and dual-use implications.
+
+## Scientific synchronization boundary
+Never commit restricted review figures/archives, arrays, output bundles, private configuration, internal execution receipts or unrestricted environment dumps. Pseudonymous subject labels do not make participant-derived evidence anonymous.
+
+The staged-blob scanner rejects private paths, common credential signatures, restricted result/review directories, binary scientific assets and large files. It reads the actual Git index even if an unsafe staged file has been replaced by a clean unstaged file. This conservative gate supplements explicit human disclosure review; it cannot infer consent or detect every sensitive metadata field.
+
+Only synthetic configuration and incomplete nonidentifying experiment-record examples are distributed. Input and result manifest hashes and scheduler IDs require explicit disclosure review before export.

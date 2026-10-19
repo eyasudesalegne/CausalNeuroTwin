@@ -1,14 +1,6 @@
 # CausalNeuroTwin documentation
+The Phase 02 engineering foundation now has a development-branch integration of reusable scientific validation methods and safe synthetic tests.
 
-This documentation describes the Phase 01 repository foundation. Scientific data processing, simulation, NeuroAI training, and HPC benchmarks are planned but not implemented.
+Start with [current scope](current-scope.md), [architecture](architecture.md), [scientific methods](scientific-validation.md), [synchronization audit](scientific-sync.md), [experiment records](experiment-records.md) and [data policy](data-policy.md).
 
-Start with:
-
-- [Current scope](current-scope.md)
-- [Architecture](architecture.md)
-- [Data policy](data-policy.md)
-- [HPC development](hpc-development.md)
-
-## Phase 02
-
-Phase 02 adds validated configuration, immutable run directories, provenance, logs, checksums, lifecycle markers, and safe resume. See [Phase 02 run contract](run-contract.md).
+Restricted reconstructions and computational QC exist outside Git. Anatomical acceptance, runtime convergence and measured-response prediction remain separate pending scientific assessments. See the [predictive protocol](predictive-validation.md).

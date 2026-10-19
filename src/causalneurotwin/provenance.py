@@ -79,9 +79,12 @@ def _host_fingerprint() -> str:
 
 
 def _memory_bytes() -> int | None:
+    sysconf = getattr(os, "sysconf", None)
+    if sysconf is None:
+        return None
     try:
-        page_size = os.sysconf("SC_PAGE_SIZE")
-        pages = os.sysconf("SC_PHYS_PAGES")
+        page_size = sysconf("SC_PAGE_SIZE")
+        pages = sysconf("SC_PHYS_PAGES")
     except (AttributeError, OSError, ValueError):
         return None
     return int(page_size * pages)
@@ -173,7 +176,8 @@ def redact_text(text: str) -> str:
     redacted = text
     for sensitive, replacement in replacements.items():
         if sensitive and sensitive not in {"/", "."}:
-            redacted = redacted.replace(sensitive, replacement)
+            for spelling in {sensitive, sensitive.replace(chr(92), "/")}:
+                redacted = redacted.replace(spelling, replacement)
     return redacted
 
 

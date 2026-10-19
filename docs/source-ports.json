@@ -1,0 +1,196 @@
+{
+  "scope": "source-code lineage only; no participant input/result hashes or scheduler metadata",
+  "ports": [
+    {
+      "original": "validation/CON020_anatomy_v1/anatomy_qc/__init__.py",
+      "destination": "src/causalneurotwin/validation/anatomy/__init__.py",
+      "original_sha256": "e2f562b11f8934c5ac3b0d60f97ffe71c1336ce737a736d0010b7d5f89bc459b",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "e7935f7bc2b9942797e9d633b6b6ee13268739e5484f37b564909bb8dc9c45e4"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1/anatomy_qc/geometry.py",
+      "destination": "src/causalneurotwin/validation/anatomy/geometry.py",
+      "original_sha256": "3a17c79a2cd6e198c60b07834d0bb52cf29522fa46d3d45b95101e0245e769c8",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "6dc87ba3d67dcb12ae054582d92cb3f9b1e650a1ea02ab151d0bf3adf6687d3a"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1/anatomy_qc/mesh.py",
+      "destination": "src/causalneurotwin/validation/anatomy/mesh.py",
+      "original_sha256": "c2010a266511a970be5ed9cff8bf71715ce0b65d5b903ff2e38bca1bdea04933",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "79331a88598e549f39a5aafeedccf3136c5300ee58400d577db3e8dbd3878260"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1/anatomy_qc/review.py",
+      "destination": "src/causalneurotwin/validation/anatomy/review.py",
+      "original_sha256": "6b240cebe1cda5ba720a66f8ea5f31ea06d925116283c8fb288efafde83730f3",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "a71e7d908bbe15f0e4773090c2d1d6dc12643f82e5c2ebf56e5047157eb67504"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1/anatomy_qc/render.py",
+      "destination": "src/causalneurotwin/validation/anatomy/render.py",
+      "original_sha256": "83fdeafba8c928b9182676648ce258dd9176da994f4525ed118054341518b275",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "837ed9caf1a05779e078b395b361bd4811ee1b9c76bb210a6e6732afde07833f"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1_1/addendum/__init__.py",
+      "destination": "src/causalneurotwin/validation/anatomy_addendum/__init__.py",
+      "original_sha256": "acd9d4173e3ec0a9fbaf61424349454d58a6a9d08b79bea2dcb0c3909ab4b3a7",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "e7ab6dbd03845d21d94d3910badce58ba4e7f11dfcb39a1cee3bff4f38dacdd8"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1_1/addendum/distance.py",
+      "destination": "src/causalneurotwin/validation/anatomy_addendum/distance.py",
+      "original_sha256": "61adcdc7d59bda20b371642dcea36838d9feb71d9faa9aa901fe94173f146454",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "5ecc4389d02fee0276b2e71e941ebabeffc1ce23324d144a0d24651399009444"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1_1/addendum/mesh.py",
+      "destination": "src/causalneurotwin/validation/anatomy_addendum/mesh.py",
+      "original_sha256": "400860f7d1a8dd39c5342c41f9bba0ee5773237ede8e6d6e263f3aad8a3f904f",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "50017fd23010fdc46cebab9ab4f5362340157000f0701c018ec9e64bcafbb178"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1_1/addendum/parcels.py",
+      "destination": "src/causalneurotwin/validation/anatomy_addendum/parcels.py",
+      "original_sha256": "70fdc4a62defaa6d946b05eadcf32a4a686cf960884cfd9890b2963693fe59af",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "e9629ef43955ae471ab5e04f718d25ed643441e8b337a498f73d952f0791c6f8"
+    },
+    {
+      "original": "validation/CON020_anatomy_v1_1/addendum/render.py",
+      "destination": "src/causalneurotwin/validation/anatomy_addendum/render.py",
+      "original_sha256": "22f035ca9cdcd49ae5ccd89104b9efbb09a0abdfac159e147bdba8454ddfd49e",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "6053495e5ea0af072c36bada5dbc8f87a1219a0cb3653fa2e7bc18f7ce01bc1f"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/__init__.py",
+      "destination": "src/causalneurotwin/validation/readiness/__init__.py",
+      "original_sha256": "7a6d6dfdd69579307987853ef4a1ae891fa9be87070979f937c9ee139515a827",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "14e8f5ce43c6bafd53669a9c79ac44fcf5c3c8e0495197d45967eb4277346c45"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/wp2.py",
+      "destination": "src/causalneurotwin/validation/readiness/wp2.py",
+      "original_sha256": "a874a2bc4727c810eb69a4278ce68245b90af2720c3082b5da701038b1612332",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "963f314033c263eb4ed8c0af59c02e24d1fb0b78902edd7daf23bbb94726bf19"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/wp3.py",
+      "destination": "src/causalneurotwin/validation/readiness/wp3.py",
+      "original_sha256": "20ece765c8fbccf21750d6a48de1815f97349e9be0b1224f28b694c9fb9fb9aa",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "73d56ad777d8b7af05ca035584a1d21e5165c3b6b1f57551952312053ab969bc"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/history_init.py",
+      "destination": "src/causalneurotwin/validation/readiness/history_init.py",
+      "original_sha256": "88618079b79333ae7c393ce193f2c0cb434275061011dab29ff42cd1b9cc05b3",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "601cca826c67b5d535b2d45db6543e17d274539b0ddfa8915249fa396210aa04"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/binning.py",
+      "destination": "src/causalneurotwin/validation/readiness/binning.py",
+      "original_sha256": "cd78b5c534571dcdc1857e499203562500dfadfbbab92f786270f64895d86544",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "9f71a99b51af020d4180122082e84fbf1f0487080df6c687f2b2db9b40fd778d"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/numerics.py",
+      "destination": "src/causalneurotwin/validation/readiness/numerics.py",
+      "original_sha256": "24d7334408dc5eb5cc2292decb65cc37e8709f26bfaedf2f9a41235a17604d3b",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "0c1dc535ea5aebe0125ec52a0305698a7cdd3fb6348b93dbd2093f331a55a353"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/dependencies.py",
+      "destination": "src/causalneurotwin/validation/readiness/dependencies.py",
+      "original_sha256": "d0d22a31c7ef2f9fa9383d5d78313d50ac6de5ccc15e75578f91e7b67c43254a",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "da49f1f70574e3faed70a701d43ce10c1892b0cba4e69404ea7744d89e126883"
+    },
+    {
+      "original": "validation/CON020_preEEG_readiness_v1_2/readiness/smoke.py",
+      "destination": "src/causalneurotwin/validation/readiness/smoke.py",
+      "original_sha256": "4c5e9476dce7e26d8a6489b68b097cfb0bd93a92c1f7a4d1fa4eacc8aa7aaab4",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "02ae9500636e45ed55be31bac7d049adfbce89996c3717d076de697763a96819"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/__init__.py",
+      "destination": "src/causalneurotwin/validation/structural/__init__.py",
+      "original_sha256": "be4960fa0b04478035034f053ae8268b64fc56c78b9d0750e2eb4b2771456cb7",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "0e50c66883993185c0ed69430fd94b6592d6c087b3aa580c44a6f8c51ca0e5aa"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/indexing.py",
+      "destination": "src/causalneurotwin/validation/structural/indexing.py",
+      "original_sha256": "4f8144e3fad8c5a786b68a370b4f61f3e594add9fef917eaf94c0caf47295497",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "3d8846b180e314d48de00dceba7ea67fe3a8d218ab7c6e7cd4275dc481b95e3d"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/anatomy.py",
+      "destination": "src/causalneurotwin/validation/structural/anatomy.py",
+      "original_sha256": "d6f2fd3327c0897a80ef7b984ab69f96b034546b7ce529372e1389d3501d3288",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "89c523bd52a0739ecd96ba7984f5cc1fb394da1bcd8771e01f113689198e2389"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/atlas.py",
+      "destination": "src/causalneurotwin/validation/structural/atlas.py",
+      "original_sha256": "435c9d4b2726d67f3fb13d171a9729afc81fae6483c7addc6f59c8eace4afaad",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "e6d153fca0e5dbcaa470493e712deb3fe5b699cda4a0575cfa9d021b1bf18ed1"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/connectome.py",
+      "destination": "src/causalneurotwin/validation/structural/connectome.py",
+      "original_sha256": "29ac306a396e9c0c11f800900b64b8344b0248a8935cc81b44a0e823e2671928",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "1b0e2e4e09f8a82af08f643e4e8232d0ff22dfb27190e57bbe1d0181665887e9"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/observation.py",
+      "destination": "src/causalneurotwin/validation/structural/observation.py",
+      "original_sha256": "2ac745c2b71488df4451136bdc5925e9a44c796d2732c796daa4a902cbb6f1f9",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "743498a927b676057bfffabe783cebe25f25a082df9c562ccfd66910b7c8fbb0"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/prediction.py",
+      "destination": "src/causalneurotwin/validation/structural/prediction.py",
+      "original_sha256": "ba4d5d21f32e392208d2d0d51ae5c00600b76ad9a488311adddbadb938aefae5",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "0b3f10daffdd10dd925622dc42412e7a4dd4d7384f2316b6991bc3fdff5d9c37"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/pipeline.py",
+      "destination": "src/causalneurotwin/validation/structural/pipeline.py",
+      "original_sha256": "7f3d20af0638042f69a9282b9390a84da61cfdbe123c5b6a6980472c447ac1b2",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "568369b4e6e0cca203d81eba474090febacee5006cf645a0168c0c390bbb0f7d"
+    },
+    {
+      "original": "validation/CON020_structural_predictive_sensitivity_v1/sensitivity/plots.py",
+      "destination": "src/causalneurotwin/validation/structural/plots.py",
+      "original_sha256": "808f9135e6650e78713463a5ac3b24cbbbb4ec68200eec8e61dba90fb803b096",
+      "migration": "Namespace/import normalization; sealed release preserved",
+      "public_sha256": "58b06951f9a78450316bac67c688861307f5d1e5f9406aeb79a1b9efaa9ab9fc"
+    }
+  ],
+  "shared_helpers": "Scientific artifact helpers reuse foundation checksums; subject-bound config/deployment runners are excluded",
+  "new_interfaces": "Synthetic smoke entry and optional SimNIBS boundary are not installed-runtime validated"
+}

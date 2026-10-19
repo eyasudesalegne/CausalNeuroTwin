@@ -27,5 +27,7 @@ def write_checksum_manifest(root: Path, paths: Iterable[Path], destination: Path
         relative = path.relative_to(root).as_posix()
         entries.append(f"{sha256_file(path)}  {relative}")
     temporary = destination.with_suffix(destination.suffix + ".tmp")
-    temporary.write_text("\n".join(entries) + ("\n" if entries else ""), encoding="utf-8")
+    temporary.write_text(
+        "\n".join(entries) + ("\n" if entries else ""), encoding="utf-8", newline="\n"
+    )
     temporary.replace(destination)

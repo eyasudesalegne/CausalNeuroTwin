@@ -23,6 +23,17 @@ _FORBIDDEN_SUFFIXES: tuple[str, ...] = (
     ".pt",
     ".pth",
     ".ckpt",
+    ".npy",
+    ".npz",
+    ".gii",
+    ".msh",
+    ".mat",
+    ".zip",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".svg",
+    ".pdf",
     ".pem",
     ".key",
     ".p12",
@@ -69,7 +80,7 @@ def is_forbidden(path: Path) -> str | None:
     """Return the reason a path is forbidden, or ``None`` when allowed."""
 
     name = path.name.lower()
-    if name in _FORBIDDEN_EXACT_NAMES:
+    if name in _FORBIDDEN_EXACT_NAMES or (name.startswith(".env.") and name != ".env.example"):
         return "credential_or_private_configuration"
     suffix = _normalised_suffix(path)
     if suffix in _FORBIDDEN_SUFFIXES:
@@ -110,7 +121,23 @@ def scan_repository(root: Path, *, tracked_only: bool = True) -> list[Finding]:
 
     findings: list[Finding] = []
     for path in candidates:
-        reason = is_forbidden(path)
+        relative = path.relative_to(root)
+        restricted = {
+            "results",
+            "validation_runs",
+            "review_exports",
+            ".test_artifacts",
+            "private_configs",
+            "private_records",
+        }
+        reason = (
+            "restricted_research_output_or_metadata"
+            if any(
+                part.lower() in restricted or "expert_review" in part.lower()
+                for part in relative.parts
+            )
+            else is_forbidden(path)
+        )
         if reason is not None:
             findings.append(Finding(relative_path=path.relative_to(root).as_posix(), reason=reason))
     return sorted(findings, key=lambda item: item.relative_path)

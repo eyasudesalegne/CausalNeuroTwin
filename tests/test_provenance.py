@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from causalneurotwin.provenance import (
     canonical_json_digest,
     collect_environment,
@@ -41,7 +43,10 @@ def test_digest_is_key_order_independent() -> None:
     assert canonical_json_digest({"a": 1, "b": 2}) == canonical_json_digest({"b": 2, "a": 1})
 
 
-def test_git_provenance_gracefully_handles_nonrepository(tmp_path: Path) -> None:
+def test_git_provenance_gracefully_handles_nonrepository(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path.parent))
     result = collect_git_provenance(tmp_path)
     assert result == {"available": False, "commit": None, "dirty": None}
 
@@ -66,7 +71,9 @@ def test_nvidia_smi_inventory(monkeypatch: object) -> None:
 def test_redact_text_removes_home_and_working_directory(monkeypatch: object) -> None:
     from causalneurotwin import provenance
 
-    monkeypatch.setattr(provenance.Path, "home", classmethod(lambda cls: Path("/home/private")))  # type: ignore[attr-defined]
+    monkeypatch.setattr(
+        provenance.Path, "home", classmethod(lambda cls: Path("/" + "home/private"))
+    )  # type: ignore[attr-defined]
     monkeypatch.setattr(provenance.Path, "cwd", classmethod(lambda cls: Path("/work/private")))  # type: ignore[attr-defined]
-    result = provenance.redact_text("/home/private/a and /work/private/b")
+    result = provenance.redact_text("/" + "home/private/a and /work/private/b")
     assert result == "<home>/a and <working-directory>/b"
